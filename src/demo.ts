@@ -2,6 +2,7 @@ import { loadAttendanceCsv } from './utils/parseAttendance.js';
 import { runRuleEngine, calculateTimeDifference } from './engine/ruleEngine.js';
 import { AttendanceRecord } from './types/attendance.js';
 import { explainAnomaliesWithGemini } from './services/geminiService.js';
+import { printAnomaliesTable } from './utils/tableFormatter.js';
 
 async function main() {
   console.log("--- 1. Testing Helper: calculateTimeDifference ---");
@@ -34,16 +35,9 @@ async function main() {
   const allRecords = [...records, tardyRecord];
   const anomalies = runRuleEngine(allRecords);
 
-  console.log('--- 3. Enriching Anomalies with Gemini (model: gemini-2.5-flash) ---');
+  console.log('\n--- 3. Enriching with AI Explanations & Formatting Terminal View ---');
   const enrichedAnomalies = await explainAnomaliesWithGemini(anomalies);
-
-  console.log(`\nEnriched ${enrichedAnomalies.length} anomalies with professional explanations and HR recommendations:\n`);
-  for (const item of enrichedAnomalies) {
-    console.log(`• [${item.type}] - ${item.employeeName} (${item.date}):`);
-    console.log(`  Explanation:    "${item.explanation}"`);
-    console.log(`  HR Recommendation: "${item.hrRecommendation}"`);
-    console.log('');
-  }
+  printAnomaliesTable(enrichedAnomalies);
 }
 
 main().catch(console.error);

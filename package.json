@@ -16,6 +16,7 @@
   "type": "commonjs",
   "dependencies": {
     "@google/genai": "^2.30.0",
+    "cli-table3": "^0.6.5",
     "papaparse": "^5.7.0"
   },
   "devDependencies": {
