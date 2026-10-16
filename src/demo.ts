@@ -1,0 +1,49 @@
+import { loadAttendanceCsv } from './utils/parseAttendance.js';
+import { runRuleEngine, calculateTimeDifference } from './engine/ruleEngine.js';
+import { AttendanceRecord } from './types/attendance.js';
+import { explainAnomaliesWithGemini } from './services/geminiService.js';
+
+async function main() {
+  console.log("--- 1. Testing Helper: calculateTimeDifference ---");
+  const t1 = calculateTimeDifference("09:00", "17:30", 30); // 8.0 hours
+  const t2 = calculateTimeDifference("06:00", "22:30", 30); // 16.0 hours
+  const t3 = calculateTimeDifference("22:00", "06:00", 0); // 8.0 hours (overnight)
+  console.log(`09:00 to 17:30 (30m break): ${t1}h (Expected: 8.0)`);
+  console.log(`06:00 to 22:30 (30m break): ${t2}h (Expected: 16.0)`);
+  console.log(`22:00 to 06:00 (overnight): ${t3}h (Expected: 8.0)`);
+
+  console.log("\n--- 2. Loading CSV & Running Rule Engine ---");
+  const records = await loadAttendanceCsv("sample_attendance.csv");
+
+  // Add a synthetic record for SEVERE_TARDINESS to verify all 5 rules in action
+  const tardyRecord: AttendanceRecord = {
+    employeeId: "EMP009",
+    employeeName: "Tom Bradley",
+    department: "Sales",
+    date: "2026-10-15",
+    scheduledHours: 8.0,
+    clockIn: "11:15",
+    clockOut: "17:30",
+    breakMinutes: 30,
+    actualHours: 5.75,
+    leaveType: "None",
+    leaveHours: 0.0,
+    isApproved: false,
+  };
+
+  const allRecords = [...records, tardyRecord];
+  const anomalies = runRuleEngine(allRecords);
+
+  console.log('--- 3. Enriching Anomalies with Gemini (model: gemini-2.5-flash) ---');
+  const enrichedAnomalies = await explainAnomaliesWithGemini(anomalies);
+
+  console.log(`\nEnriched ${enrichedAnomalies.length} anomalies with professional explanations and HR recommendations:\n`);
+  for (const item of enrichedAnomalies) {
+    console.log(`• [${item.type}] - ${item.employeeName} (${item.date}):`);
+    console.log(`  Explanation:    "${item.explanation}"`);
+    console.log(`  HR Recommendation: "${item.hrRecommendation}"`);
+    console.log('');
+  }
+}
+
+main().catch(console.error);

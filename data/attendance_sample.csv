@@ -1,0 +1,32 @@
+employee_id,employee_name,department,date,scheduled_hours,clock_in,clock_out,break_minutes,actual_hours,leave_type,leave_hours,is_approved
+EMP001,Alice Chen,Engineering,2026-10-05,8.0,09:00,17:30,30,8.0,None,0.0,TRUE
+EMP001,Alice Chen,Engineering,2026-10-06,8.0,08:55,17:35,40,8.0,None,0.0,TRUE
+EMP001,Alice Chen,Engineering,2026-10-07,8.0,09:00,19:30,30,10.0,None,0.0,TRUE
+EMP001,Alice Chen,Engineering,2026-10-08,8.0,09:00,,30,0.0,None,0.0,FALSE
+EMP001,Alice Chen,Engineering,2026-10-09,8.0,09:05,17:35,30,8.0,None,0.0,TRUE
+EMP002,Bob Miller,Support,2026-10-05,8.0,08:00,16:30,30,8.0,None,0.0,TRUE
+EMP002,Bob Miller,Support,2026-10-06,8.0,08:00,16:30,30,8.0,Sick Leave,8.0,FALSE
+EMP002,Bob Miller,Support,2026-10-07,8.0,,,0,0.0,Sick Leave,8.0,TRUE
+EMP002,Bob Miller,Support,2026-10-08,8.0,08:00,16:30,30,8.0,None,0.0,TRUE
+EMP002,Bob Miller,Support,2026-10-09,8.0,08:00,12:00,0,4.0,Half-day Leave,4.0,TRUE
+EMP003,Clara Diaz,Product,2026-10-05,8.0,09:15,17:45,30,8.0,None,0.0,TRUE
+EMP003,Clara Diaz,Product,2026-10-06,8.0,06:00,22:30,30,16.0,None,0.0,FALSE
+EMP003,Clara Diaz,Product,2026-10-07,8.0,09:30,18:00,30,8.0,None,0.0,TRUE
+EMP003,Clara Diaz,Product,2026-10-08,8.0,,,0,0.0,Annual Leave,8.0,TRUE
+EMP003,Clara Diaz,Product,2026-10-09,8.0,,,0,0.0,Annual Leave,8.0,TRUE
+EMP004,David Kim,Sales,2026-10-05,8.0,09:00,17:30,30,8.0,None,0.0,TRUE
+EMP004,David Kim,Sales,2026-10-06,8.0,,,0,0.0,None,0.0,FALSE
+EMP004,David Kim,Sales,2026-10-07,8.0,09:00,17:30,30,8.0,None,0.0,TRUE
+EMP004,David Kim,Sales,2026-10-08,8.0,17:30,09:00,30,-8.0,None,0.0,FALSE
+EMP004,David Kim,Sales,2026-10-09,8.0,09:00,17:30,30,8.0,None,0.0,TRUE
+EMP004,David Kim,Sales,2026-10-11,0.0,10:00,18:00,30,7.5,None,0.0,FALSE
+EMP005,Elena Rostova,Operations,2026-10-05,8.0,08:30,17:00,30,8.0,None,0.0,TRUE
+EMP005,Elena Rostova,Operations,2026-10-06,8.0,08:30,17:00,240,4.5,None,0.0,FALSE
+EMP005,Elena Rostova,Operations,2026-10-07,8.0,08:30,17:00,30,8.0,None,0.0,TRUE
+EMP005,Elena Rostova,Operations,2026-10-08,8.0,08:30,11:00,0,2.5,None,0.0,FALSE
+EMP005,Elena Rostova,Operations,2026-10-09,8.0,08:30,17:00,30,8.0,None,0.0,TRUE
+EMP001,Alice Chen,Engineering,2026-10-12,8.0,09:00,17:30,30,8.0,None,0.0,TRUE
+EMP002,Bob Miller,Support,2026-10-12,8.0,08:00,17:00,60,8.0,Half-day Leave,4.0,FALSE
+EMP003,Clara Diaz,Product,2026-10-12,8.0,09:00,17:30,30,8.0,None,0.0,TRUE
+EMP005,Elena Rostova,Operations,2026-10-12,8.0,08:30,17:00,30,8.0,None,0.0,TRUE
+
