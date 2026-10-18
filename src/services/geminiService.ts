@@ -1,5 +1,5 @@
 import { GoogleGenAI } from '@google/genai';
-import { AttendanceAnomaly, EnrichedAttendanceAnomaly, AnomalyType } from '../types/attendance.js';
+import { AttendanceAnomaly, EnrichedAttendanceAnomaly, AnomalyType } from '../types/attendance';
 
 /**
  * Configuration options for the Gemini attendance explanation service.
@@ -210,6 +210,8 @@ Requirements:
 }
 
 /**
- * Convenient alias for explainAnomaliesWithGemini.
+ * Convenient aliases for explainAnomaliesWithGemini.
  */
 export const generateAnomalyExplanations = explainAnomaliesWithGemini;
+export const generateAIExplanations = explainAnomaliesWithGemini;
+

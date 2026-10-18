@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import Papa from 'papaparse';
-import { AttendanceRecord, RawAttendanceCsvRow } from '../types/attendance.js';
+import { AttendanceRecord, RawAttendanceCsvRow } from '../types/attendance';
 
 /**
  * Options for parsing the attendance CSV.

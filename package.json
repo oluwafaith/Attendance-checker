@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsx src/demo.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsx src/server.ts",
+    "cli": "ts-node src/index.ts",
+    "demo": "tsx src/demo.ts",
     "parse": "tsx src/utils/parseAttendance.ts",
     "typecheck": "tsc --noEmit",
-    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -17,12 +20,16 @@
   "dependencies": {
     "@google/genai": "^2.30.0",
     "cli-table3": "^0.6.5",
+    "dotenv": "^18.0.8",
+    "express": "^5.3.0",
     "papaparse": "^5.7.0"
   },
   "devDependencies": {
+    "@types/express": "^5.0.6",
     "@types/node": "^26.6.5",
     "@types/papaparse": "^5.5.2",
+    "ts-node": "^10.9.2",
     "tsx": "^4.23.15",
-    "typescript": "^7.0.2"
+    "typescript": "^5.9.3"
   }
 }

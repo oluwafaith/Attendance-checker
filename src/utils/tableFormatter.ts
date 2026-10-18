@@ -1,5 +1,5 @@
 import Table from 'cli-table3';
-import { AttendanceAnomaly, EnrichedAttendanceAnomaly } from '../types/attendance.js';
+import { AttendanceAnomaly, EnrichedAttendanceAnomaly } from '../types/attendance';
 
 // ANSI color escape codes for terminal styling
 const colors = {

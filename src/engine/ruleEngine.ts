@@ -2,7 +2,7 @@ import {
   AttendanceRecord,
   AttendanceAnomaly,
   AnomalyType,
-} from "../types/attendance.js";
+} from '../types/attendance';
 
 /**
  * Converts an 'HH:mm' 24-hour time string to total minutes from midnight.

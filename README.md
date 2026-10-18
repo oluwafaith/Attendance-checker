@@ -121,34 +121,67 @@ attendance-checker/
 
 ## Available Commands
 
-### 1. Run the Full End-to-End Pipeline
-Parses the CSV, executes the rule engine, enriches anomalies with AI, and prints the color-coded terminal review:
+### 1. Build the TypeScript Project
+Compiles TypeScript into production JavaScript in `dist/`:
+```bash
+npm run build
+```
+
+### 2. Start the Express Web Server (Production)
+Runs the compiled server listening on `PORT` (defaults to 3000):
 ```bash
 npm start
 ```
-*(Alternative: `npx tsx src/demo.ts`)*
+* Visit `http://localhost:3000` to view the mobile-responsive compliance dashboard.
+* Visit `http://localhost:3000/health` for the health check endpoint.
+* Visit `http://localhost:3000/api/anomalies` for JSON API output.
 
-### 2. Parse CSV Only
+### 3. Local Development Server
+Runs the Express server with live TypeScript execution via `tsx`:
+```bash
+npm run dev
+```
+
+### 4. CLI Table Walkthrough
+Runs the terminal review view powered by `cli-table3`:
+```bash
+npm run cli
+# or: npx ts-node src/index.ts
+```
+
+### 5. Parse CSV Only
 Loads and inspects parsed `AttendanceRecord` objects from CSV:
 ```bash
 npm run parse
 ```
-You can also supply a custom CSV file:
-```bash
-npx tsx src/utils/parseAttendance.ts path/to/custom_file.csv
-```
 
-### 3. TypeScript Typecheck
+### 6. TypeScript Typecheck
 Validates all types without emitting JavaScript:
 ```bash
 npm run typecheck
 ```
 
-### 4. Build to JavaScript
-Compiles the TypeScript code into the `dist/` directory:
-```bash
-npm run build
-```
+---
+
+## Deploying to Render (Web Service)
+
+To deploy this project as a live web service on [Render](https://render.com):
+
+1. **Create New Web Service:** Connect your GitHub repository.
+2. **Environment:** `Node`
+3. **Build Command:**
+   ```bash
+   npm install && npm run build
+   ```
+4. **Start Command:**
+   ```bash
+   npm start
+   ```
+5. **Environment Variables:**
+   - `NODE_ENV`: `production`
+   - `GEMINI_API_KEY`: *(Optional)* Your Google Gemini API Key.
+   - `PORT`: *(Render sets this automatically)*
+
 
 ---
 

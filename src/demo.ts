@@ -1,8 +1,8 @@
-import { loadAttendanceCsv } from './utils/parseAttendance.js';
-import { runRuleEngine, calculateTimeDifference } from './engine/ruleEngine.js';
-import { AttendanceRecord } from './types/attendance.js';
-import { explainAnomaliesWithGemini } from './services/geminiService.js';
-import { printAnomaliesTable } from './utils/tableFormatter.js';
+import { loadAttendanceCsv } from './utils/parseAttendance';
+import { runRuleEngine, calculateTimeDifference } from './engine/ruleEngine';
+import { AttendanceRecord } from './types/attendance';
+import { explainAnomaliesWithGemini } from './services/aiService';
+import { printAnomaliesTable } from './utils/tableFormatter';
 
 async function main() {
   console.log("--- 1. Testing Helper: calculateTimeDifference ---");
