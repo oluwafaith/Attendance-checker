@@ -1,6 +1,6 @@
 # Attendance Checker Tool
 
-An intelligent workplace compliance and attendance auditing utility built with **TypeScript**, **Node.js**, **PapaParse**, and **Google Gemini** (`gemini-2.5-flash`).
+An intelligent workplace compliance and attendance auditing utility built with **TypeScript**, **Node.js**, **PapaParse**, and **Google Gemini** (`gemini-3.8-flash`).
 
 The tool parses attendance CSV files containing scheduled hours, punch times, and leave requests, identifies compliance discrepancies across five core operational rules, enriches each anomaly with AI-generated single-sentence explanations and HR recommendations, and renders a color-coded terminal review table grouped by severity.
 
@@ -12,7 +12,7 @@ The tool parses attendance CSV files containing scheduled hours, punch times, an
 flowchart LR
     A[Attendance CSV] -->|PapaParse| B[Typed AttendanceRecord]
     B -->|ruleEngine.ts| C[AttendanceAnomaly Array]
-    C -->|geminiService.ts| D[Gemini 2.5 Flash]
+    C -->|geminiService.ts| D[Gemini 3.8 Flash]
     D -->|JSON Output| E[EnrichedAttendanceAnomaly]
     C -.->|If API Fails| F[Fallback Generator]
     F -.-> E
@@ -21,7 +21,7 @@ flowchart LR
 
 1. **CSV Ingestion & Coercion ([`src/utils/parseAttendance.ts`](src/utils/parseAttendance.ts)):** Reads raw CSV files using `papaparse`, coerces numbers, maps nullable timestamps, parses approval booleans, and validates row integrity.
 2. **Rule Engine ([`src/engine/ruleEngine.ts`](src/engine/ruleEngine.ts)):** Evaluates records using time-difference math across shifts (including overnight shifts) against 5 compliance rules.
-3. **AI Explanation Service ([`src/services/geminiService.ts`](src/services/geminiService.ts)):** Sends detected anomalies to `gemini-2.5-flash` using `responseMimeType: 'application/json'` to produce professional, single-sentence explanations and actionable HR recommendations, backed by an automated fallback.
+3. **AI Explanation Service ([`src/services/geminiService.ts`](src/services/geminiService.ts)):** Sends detected anomalies to `gemini-3.8-flash` using `responseMimeType: 'application/json'` to produce professional, single-sentence explanations and actionable HR recommendations, backed by an automated fallback.
 4. **Terminal Formatter ([`src/utils/tableFormatter.ts`](src/utils/tableFormatter.ts)):** Renders word-wrapped, ANSI color-coded tables grouped by severity (`HIGH`, `MEDIUM`) using `cli-table3`.
 
 ---

@@ -451,7 +451,7 @@ function renderDashboardHtml(
         <span class="header-tag">Live Compliance Engine</span>
       </div>
       <p>
-        Deterministic rule-based time audit paired with Google Gemini AI (<code>gemini-2.5-flash</code>)
+        Deterministic rule-based time audit paired with Google Gemini AI (<code>gemini-3.8-flash</code>)
         to detect high-risk workplace attendance patterns and generate single-sentence HR explanations.
       </p>
     </header>

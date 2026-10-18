@@ -36,7 +36,7 @@ async function main() {
   const rawAnomalies = runRuleEngine(allRecords);
   console.log(`✓ Detected ${rawAnomalies.length} policy violations across shift records.`);
 
-  console.log('\n[3/3] Enriching anomalies with Gemini AI (model: gemini-2.5-flash)...');
+  console.log('\n[3/3] Enriching anomalies with Gemini AI (model: gemini-3.8-flash)...');
   const enrichedAnomalies = await explainAnomaliesWithGemini(rawAnomalies);
   console.log('✓ Generated professional single-sentence explanations and HR recommendations.');
 

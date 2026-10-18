@@ -1,6 +1,6 @@
 # Prompt Engineering & LLM Integration Log
 
-This document records the prompt engineering methodology, iterative refinements, constraint design, and fallback architecture developed for the **Attendance Checker Tool** using Google Gemini (`gemini-2.5-flash`) and the `@google/genai` SDK.
+This document records the prompt engineering methodology, iterative refinements, constraint design, and fallback architecture developed for the **Attendance Checker Tool** using Google Gemini (`gemini-3.8-flash`) and the `@google/genai` SDK.
 
 ---
 
@@ -108,7 +108,7 @@ const response = await ai.models.generateContent({
 
 | Decision | Technique | Rationale |
 | :--- | :--- | :--- |
-| **Model Selection** | `gemini-2.5-flash` | Optimized for low latency, high throughput, and high compliance with structured JSON generation. |
+| **Model Selection** | `gemini-3.8-flash` | Optimized for low latency, high throughput, and high compliance with structured JSON generation (replaces sunset `gemini-2.5-flash`). |
 | **Enforced JSON Output** | `responseMimeType: 'application/json'` | Instructs the model to output raw valid JSON without markdown wrapping or conversational preambles. |
 | **Low Temperature** | `temperature: 0.2` | Reduces creativity and hallucination; maximizes deterministic adherence to HR tone and index ordering. |
 | **Index-Preserving Merge** | `item.index === i` matching | Guarantees that enriched data correctly attaches to the original record even if the array is re-ordered. |

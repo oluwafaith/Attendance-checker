@@ -7,7 +7,7 @@ import { AttendanceAnomaly, EnrichedAttendanceAnomaly, AnomalyType } from '../ty
 export interface GeminiServiceOptions {
   /** Gemini API key. Defaults to process.env.GEMINI_API_KEY if not specified. */
   apiKey?: string;
-  /** Gemini model name. Defaults to 'gemini-2.5-flash'. */
+  /** Gemini model name. Defaults to 'gemini-3.8-flash'. */
   model?: string;
   /** Optional temperature. Defaults to 0.2 for consistent, objective analysis. */
   temperature?: number;
@@ -118,7 +118,11 @@ export async function explainAnomaliesWithGemini(
     return generateFallbackAnomalies(anomalies);
   }
 
-  const modelName = options?.model || 'gemini-2.5-flash';
+  let modelName = options?.model || process.env.GEMINI_MODEL || 'gemini-3.8-flash';
+  // Auto-upgrade sunset models (gemini-2.5-flash -> gemini-3.8-flash)
+  if (modelName === 'gemini-2.5-flash' || modelName.includes('2.5')) {
+    modelName = 'gemini-3.8-flash';
+  }
 
   try {
     const ai = new GoogleGenAI({ apiKey });
